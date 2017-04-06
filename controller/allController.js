@@ -13,6 +13,19 @@ let getFoods = (req, res) => {
 
 }
 
+let getOneFood = (req, res) => {
+
+	Foods.findOne(
+		{ 
+			name: req.params.name 
+		},
+		function (err, person) {
+  		if (err) return handleError(err);
+  		res.send(person);
+		})
+
+}
+
 let createFoods = (req, res) => {
 
 	let food = new Foods(
@@ -73,6 +86,19 @@ let getRestaurants = (req, res) => {
 
 }
 
+let getOneRestaurant = (req, res) => {
+
+	Restaurants.findOne(
+		{ 
+			name: req.body.name 
+		},
+		function (err, restaurant) {
+  		if (err) return handleError(err);
+  		res.send(restaurant);
+		})
+
+}
+
 let createRestaurants = (req, res) => {
 
 	let restaurant = new Restaurants(
@@ -128,10 +154,12 @@ let updateRestaurants = (req, res) => {
 
 module.exports = {
 	getFoods,
+	getOneFood,
 	createFoods,
 	delFoods,
 	updateFoods,
 	getRestaurants,
+	getOneRestaurant,
 	createRestaurants,
 	delRestaurants,
 	updateRestaurants

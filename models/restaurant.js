@@ -5,7 +5,8 @@ var restaurantSchema = new Schema({
 	name: String,
 	owner: String,
 	address: String,
-	open_status: Boolean
+	open_status: Boolean,
+	menu: 
 });
 
 var Restaurant = mongoose.model('Restaurant', restaurantSchema);
