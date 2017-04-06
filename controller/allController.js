@@ -6,10 +6,20 @@ var Restaurants = require('../models/restaurant');
 
 let getFoods = (req, res) => {
 
-	Foods.find(function (err, foods) {
-  		if (err) return console.error(err);
-  		res.send(foods);
-	})
+	// Foods.find(function (err, foods) {
+ //  		if (err) return console.error(err);
+ //  		res.send(foods);
+	// })
+
+	Foods.find({})
+       .populate('available_at')
+       .exec((err,results) => {
+          if(err) {
+            res.send(err.message)
+          } else {
+            res.send(results)
+          }
+        })
 
 }
 
@@ -79,10 +89,20 @@ let updateFoods = (req, res) => {
 
 let getRestaurants = (req, res) => {
 
-	Restaurants.find(function (err, restaurants) {
-  		if (err) return console.error(err);
-  		res.send(restaurants);
-	})
+	// Restaurants.find(function (err, restaurants) {
+ //  		if (err) return console.error(err);
+ //  		res.send(restaurants);
+	// })
+
+	Restaurants.find({})
+       .populate('menu')
+       .exec((err,results) => {
+          if(err) {
+            res.send(err.message)
+          } else {
+            res.send(results)
+          }
+        })
 
 }
 

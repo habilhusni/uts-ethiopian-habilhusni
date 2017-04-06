@@ -1,3 +1,4 @@
+'use strict'
 var express = require('express');
 var router = express.Router();
 var control = require('../controller/allController');
@@ -27,3 +28,5 @@ router.post('/restaurants', control.createRestaurants)
 router.delete('/restaurants', control.delRestaurants)
 
 router.put('/restaurants', control.updateRestaurants)
+
+module.exports = router;
